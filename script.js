@@ -16,6 +16,7 @@ document.documentElement.classList.add("page-ready");
     ad_personalization: "denied",
   };
   const banner = document.querySelector("#cookie-banner");
+  let analyticsConsentGranted = false;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag =
@@ -75,10 +76,12 @@ document.documentElement.classList.add("page-ready");
     if (banner) banner.hidden = true;
 
     if (choice === "accepted") {
+      analyticsConsentGranted = true;
       loadAnalytics();
       return;
     }
 
+    analyticsConsentGranted = false;
     window.gtag("consent", "update", deniedConsent);
     clearAnalyticsCookies();
   }
@@ -91,12 +94,41 @@ document.documentElement.classList.add("page-ready");
   }
 
   if (savedChoice === "accepted") {
+    analyticsConsentGranted = true;
     loadAnalytics();
   } else if (savedChoice === "rejected") {
+    analyticsConsentGranted = false;
     window.gtag("consent", "update", deniedConsent);
   } else {
     showBanner();
   }
+
+  document.addEventListener("click", (event) => {
+    if (!analyticsConsentGranted || !(event.target instanceof Element)) return;
+
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+
+    let destination;
+    try {
+      destination = new URL(link.href);
+    } catch {
+      return;
+    }
+
+    if (destination.hostname !== "t.me" || destination.pathname !== "/dv_marketing_assistant_bot") return;
+
+    const start = destination.searchParams.get("start");
+    const eventName = {
+      audit: "audit_click",
+      course_waitlist: "course_click",
+      consultation: "consultation_click",
+    }[start];
+
+    if (eventName) {
+      window.gtag("event", eventName, { send_to: measurementId });
+    }
+  });
 
   document.querySelectorAll("[data-cookie-choice]").forEach((button) => {
     button.addEventListener("click", () => {
