@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <main class="privacy-page">
@@ -65,7 +66,7 @@
               <li>Сведения о согласии на уведомления</li>
             </ul>
             <p>
-              После подключения Google Analytics 4 и получения необходимого согласия могут обрабатываться сведения о посещениях сайта, источниках переходов, действиях на сайте, устройстве и приблизительном местоположении.
+              При наличии согласия пользователя Google Analytics 4 может обрабатывать сведения о посещениях сайта, источниках переходов, действиях на сайте, устройстве и приблизительном местоположении.
             </p>
           </section>
 
@@ -137,7 +138,7 @@
           <section aria-labelledby="privacy-section-7">
             <h2 id="privacy-section-7">7. Cookies и аналитика</h2>
             <p>
-              После подключения Google Analytics 4 сайт DV Marketing может использовать аналитические cookies <code>_ga</code> и <code>_ga_&lt;идентификатор&gt;</code>.
+              Сайт DV Marketing использует Google Analytics 4 и может устанавливать аналитические cookies <code>_ga</code> и <code>_ga_&lt;идентификатор&gt;</code> только при наличии согласия пользователя.
             </p>
             <p>
               Они помогают получать статистику посещений, анализировать источники трафика и взаимодействия пользователей с сайтом.
@@ -155,17 +156,17 @@
             </p>
             <p>Отказ от аналитики не ограничивает использование сайта.</p>
             <p>
-              Для управления согласием планируется использовать Google Consent Mode v2 с блокировкой аналитического отслеживания до получения согласия.
+              Для управления согласием используется Google Consent Mode v2 с блокировкой аналитического отслеживания до получения согласия.
             </p>
             <p>
-              После внедрения пользователь сможет изменить своё решение через ссылку «Настройки cookies» в нижней части сайта.
+              Пользователь может изменить своё решение через ссылку «Настройки cookies» в нижней части сайта.
             </p>
             <p>Поставщик аналитики — Google.</p>
             <p>
               Политика конфиденциальности Google:
               <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>
             </p>
-            <p>До фактического подключения аналитики этот раздел описывает планируемые настройки.</p>
+            <p>Аналитические cookies и отслеживание включаются только после получения согласия пользователя.</p>
           </section>
 
           <section aria-labelledby="privacy-section-8">
@@ -216,5 +217,31 @@
         </div>
       </article>
     </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <a href="index.html">На главную</a>
+        <a href="#cookie-banner" data-cookie-settings>Настройки cookies</a>
+      </div>
+    </footer>
+    <section
+      class="cookie-banner"
+      id="cookie-banner"
+      role="dialog"
+      aria-labelledby="cookie-banner-title"
+      aria-describedby="cookie-banner-description"
+      hidden
+    >
+      <div class="cookie-banner__copy">
+        <h2 id="cookie-banner-title">Настройки cookies</h2>
+        <p id="cookie-banner-description">
+          Мы используем Google Analytics для анализа посещений только с вашего согласия. Подробнее — в
+          <a href="privacy.html">политике конфиденциальности</a>.
+        </p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="cookie-banner__button" type="button" data-cookie-choice="accepted">Принять</button>
+        <button class="cookie-banner__button" type="button" data-cookie-choice="rejected">Отклонить</button>
+      </div>
+    </section>
   </body>
 </html>

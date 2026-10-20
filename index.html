@@ -538,7 +538,28 @@
     <footer class="site-footer">
       <div class="site-footer__inner">
         <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="#cookie-banner" data-cookie-settings>Настройки cookies</a>
       </div>
     </footer>
+    <section
+      class="cookie-banner"
+      id="cookie-banner"
+      role="dialog"
+      aria-labelledby="cookie-banner-title"
+      aria-describedby="cookie-banner-description"
+      hidden
+    >
+      <div class="cookie-banner__copy">
+        <h2 id="cookie-banner-title">Настройки cookies</h2>
+        <p id="cookie-banner-description">
+          Мы используем Google Analytics для анализа посещений только с вашего согласия. Подробнее — в
+          <a href="privacy.html">политике конфиденциальности</a>.
+        </p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="cookie-banner__button" type="button" data-cookie-choice="accepted">Принять</button>
+        <button class="cookie-banner__button" type="button" data-cookie-choice="rejected">Отклонить</button>
+      </div>
+    </section>
   </body>
 </html>
